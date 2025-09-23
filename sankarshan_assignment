@@ -1,0 +1,202 @@
+# 1. write a program to display the following pattern using while nested loops:-
+
+# 1
+# 12
+# 123
+# 1234
+for i in range(1, 5):
+    for j in range(1, i+1):
+        print(j, end="")
+    print()
+import json
+
+# 2. Write a function that takes a list of integer and returns a new list with only the even numbers.
+def even_number(n):
+    even_list = []
+    for i in n:
+        if i%2 == 0:
+            even_list.append(i)
+    print(even_list)
+
+list = [1,2,3,4,5,6,7,8,9,10]
+even_number(list)
+
+# 3. Write a recursive function to calculate the factorial of a number.
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+print(factorial(5))
+# 4. Create a class bok with attributes title, author, and pages. Add a method to disply book details.
+class Book:
+    def __init__(self, title, author, pages):
+
+        self.title = title
+        self.author = author
+        self.pages = pages
+
+    def show_book_details(self):
+        print(f"Book: {self.title} by {self.author}\nNo of pages: {self.pages}")
+
+book = Book("Wings of Fire", "A.P.J Abdul Kalam", 1029)
+book.show_book_details()
+
+# 5. Create a class Calculator with method for add, subtract, multiply and divide.
+class Calculator:
+    def __init__(self, num1, num2):
+        self.num1 = int(num1)
+        self.num2 = int(num2)
+
+    def addition(self):
+        return self.num1 + self.num2
+
+    def subtraction(self):
+        return self.num1 - self.num2
+
+    def multiply(self):
+        return self.num1 * self.num2
+
+    def divide(self):
+        return self.num1 / self.num2
+try:
+    a = int(input("First number: "))
+    b = int(input("Second number: "))
+except ValueError:
+    print("You have entered invalid input!\nOnly integers are allowed")
+else:
+    cal = Calculator(a, b)
+    print("Select the Operation!")
+    user = input("1. Add      2.Subtract\n3.Multiply      4.Divide\n")
+    if user == "1":
+        print(f"{a} + {b} = {cal.addition()}")
+    elif user == "2":
+        print(f"{a} - {b} = {cal.subtraction()}")
+    elif user == "3":
+        print(f"{a} * {b} = {cal.multiply()}")
+    elif user == "4":
+        print(f"{a} / {b} = {cal.divide()}")
+    else:
+        print("Invalid input!")
+# 6. Create a class Student that stores name and grades, Add a method to calculate average marks.
+class Student:
+    def __init__(self, name, grades):
+        self.name = name
+        self.grades = grades
+
+    def average(self):
+        count = 0
+        sum1 = 0
+        for i in self.grades:
+            sum1 += i
+            count += 1
+        return f"Average marks of {self.name} is {sum1 / count}"
+
+
+student = Student("Ram ", [1, 2, 3, 4, 5, 6, 7, 8, 9])
+print(student.average())
+# 7. Copy content from one file to another using Python.
+file_name = "C:\\Users\\HP\\Downloads\\twinkle_twinkle.txt"
+with open(file_name, "r") as file:
+    data = file.read()
+    # print(data)
+filename2 = "C:\\Users\\HP\\Desktop\\blank.txt"
+with open(filename2, "w") as file2:
+    copy = file2.write(data)
+
+8.Convert a Python dictionary into a JSON string and save it in a .json file.
+dict = {
+    "apple": "red",
+    "banana": "yellow",
+    "grapes": "green"
+}
+
+
+# 9. Read a JSON file containing employee data and print each employee's name.
+file_name = "C:\\Users\\HP\\Downloads\\employees.json"
+with open(file_name, "r") as file:
+    data = json.load(file)
+    for emp in data:
+        print(emp["name"])
+
+# 10. Modify a key's value in a JSON file and save the updated content.
+file_name1 = "C:\\Users\\HP\\Downloads\\employees.json"
+with open(file_name1, "r") as file:
+    data = json.load(file)
+    for emp in data:
+        if emp["name"] == "John Doe":
+            emp["name"] = "Ram Charan"
+        print(emp["name"])
+with open(file_name1, "w") as file:
+    json.dump(data, file)
+
+# 11. Create a function that accepts a list of number and return the second largest numgber.
+# def second_largest(n):
+#     sorted_list = sorted(n)
+#     print(sorted_list[-2])
+# def second_largest(n):
+#     for i in range(len(n)):
+#         for j in range(i+1, len(n)):
+#             temp = 0
+#             if n[i] < n[j]:
+#                 temp = n[i]
+#                 n[i] = n[j]
+#                 n[j] = temp
+#     print(n[1])
+# second_largest([1, 9, 2, 11, 18, 1])
+def second_largest(n):
+    for i in range(len(n)):
+        for j in range(i+1, len(n)):
+            if n[i] < n[j]:
+                n[i], n[j] = n[j], n[i]
+    print(n[1])
+second_largest([2,3,4,5,6,5,9])
+# 12. Write a funciton that takes a sentence and retuns the number of words in it.
+def words(n):
+    count = 0
+    for i in n:
+        if i == " ":
+            count += 1
+    print(f"Number of words : {count+1}")
+words("the lion jumps over the lazy dog")
+# 13. Create a function that retuns a list of all unique characters from a string.
+def unique_characters(n):
+    unique = []
+    for i in n:
+        if i not in unique:
+            unique.append(i)
+    print(unique)
+
+unique_characters("the lion jumps over the lazy dog")
+
+# 14. Define a class Shopping Card that allows adding/removing items and calculating total.
+class Shopping:
+    def __init__(self):
+        self.product_list = []
+
+    def add_items(self, product, price):
+        self.product_list.append((product, price))
+
+    def remove_items(self, product):
+        for item in self.product_list:
+            if item[0] == product:
+                self.product_list.remove(item)
+                return
+        print(f"{product} not found in cart.")
+
+    def show_cart(self):
+        print(f"Your Cart:\n")
+        total = 0
+        for product, price in self.product_list:
+            print(f"{product}: ₹{price}")
+            total += price
+        print(f"Total: ₹{total}")
+
+cart = Shopping()
+cart.add_items("light", 200)
+cart.add_items("fan", 1500)
+cart.remove_items("light")
+cart.show_cart()
+
+# 15. Create a python object with nested dictinaries and convert to JSON format.
